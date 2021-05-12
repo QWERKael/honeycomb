@@ -1,0 +1,37 @@
+[package]
+name = "honeycomb"
+version = "0.1.0"
+authors = ["alex"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+#[[bin]]
+#name = "interact-server"
+#path = "src/beehive/server.rs"
+#
+#[[bin]]
+#name = "interact-client"
+#path = "src/beehive/client.rs"
+
+[[bin]]
+name = "queen"
+path = "src/queen/queen.rs"
+
+
+[dependencies]
+rocksdb = "*"
+failure = "*"
+tonic = "*"
+prost = "*"
+tokio = { version = "*", features = ["macros"]}
+futures = { version = "*", default-features = false, features = ["alloc"] }
+async-stream = "*"
+async-std = "*"
+lazy_static = "*"
+
+[build-dependencies]
+tonic-build = "*"
+
+#[dependencies.rocksdb]
+#git = "https://github.com/tikv/rust-rocksdb.git"
+

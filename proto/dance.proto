@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package dance;
+
+service Commander {
+    rpc CmdCall (CmdRequest) returns (CmdReply) {}
+}
+
+message CmdRequest {
+    string UsingDB = 1;
+    CmdType cmd = 2;
+    repeated bytes args = 3;
+
+    enum CmdType {
+        Set = 0;
+        Get = 1;
+        Delete = 2;
+        CreateDB = 3;
+        ShowDB = 4;
+        Keys = 5;
+    }
+}
+
+message CmdReply {
+    ExeState status = 1;
+    string message = 2;
+    repeated bytes results = 3;
+
+    enum ExeState {
+        Ok = 0;
+        Err = 1;
+    }
+}
